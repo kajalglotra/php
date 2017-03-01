@@ -10,8 +10,10 @@
    
     $myusername = mysqli_real_escape_string($db,$_POST['username']);
     $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+
    
-    $sql = "SELECT id FROM admin_account WHERE username = '$myusername' and password = '$mypassword'";
+    $sql = "SELECT id FROM admin_account WHERE username = '$myusername' and password = '$mypassword' and active =1";
+    echo $sql;
     $result = mysqli_query($db,$sql);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
    
