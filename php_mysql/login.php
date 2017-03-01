@@ -13,7 +13,7 @@
 
    
     $sql = "SELECT id FROM admin_account WHERE username = '$myusername' and password = '$mypassword' and active =1";
-    echo $sql;
+   
     $result = mysqli_query($db,$sql);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
    
