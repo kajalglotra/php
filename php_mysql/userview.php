@@ -3,6 +3,12 @@
      include('session.php');
      $sql = "SELECT * FROM admin_account";
       $result = mysqli_query($db,$sql);
+      if(isset($_REQUEST['action'] ) && $_REQUEST['action'] =='delete'){
+        $id=$_REQUEST['id'];
+        $sql ="DELETE from  admin_account  where id=$id";
+         mysqli_query($db,$sql);
+      }
+      
    ?>
 <html>
   <head>
@@ -17,7 +23,7 @@
  <body>
     <div class="container">
         <h1><center>Admin Panel</center></h1>
-        <div style="float:right;"><a href="adduser.php">add </a> <a href ="logout.php">sign out</a></div>
+         <div style="float:right;"><a href="adduser.php"><img src="add.png" width="30px" height="30px"></a> <a href ="logout.php"><img src="log.jpeg" width="30px" height="30px"></a></div>
 	   <table class="table table-bordered">
 	      <tr class="danger">
 	         <th width="100px">Name</th>
@@ -31,16 +37,18 @@
                  { 
                   $id=$row['id'];
 	        ?>
-	        <tr class="info">
-		        <td width="100px"><?php echo $row['username']; ?></td>
-		        <td width="100px"><?php echo $row['password']; ?></td>
-		        <td width="100px"><?php echo $row['id']; ?></td>
-	            <td><a href=edit.php?id=<?php echo $row['id'];?>><img src="b_edit.png" alt="" /></a></td>
-                <td><a href=delete.php?id=<?php echo $row['id'];?>><img src="b_drop.png" alt="" /></a></td>
-            </tr>
-	        <?php }?>
+	        <form action="deleteuser.php" method="POST">
+		       <tr class="info">
+		       <?php  $password=md5($row['password']); ?>
+		         <td width="100px"><?php echo $row['username']; ?></td>
+		         <td width="100px"><?php echo $password; ?></td>
+		         <td width="100px"><?php echo $row['id']; ?></td>
+	             <td><a href=edit.php?id=<?php echo $id;?>><img src="b_edit.png" alt="" /></a></td>
+                 <td><a href="?action=delete&id=<?php echo $id;?>"><img src="b_drop.png" alt="" /></a></td>
+               </tr>
+	           <?php }?>
+	        </form>
       </table>
-     
     </div>
 </body>
 </html>
