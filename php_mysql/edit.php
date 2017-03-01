@@ -7,9 +7,10 @@
      if(isset($_POST['update'])){
         $name=$_POST['username'];
       $password=$_POST['password'];
+      $active=$_POST['active'];
       $id1=$_POST['id'];
  
-      $sql ="UPDATE admin_account set username='$name' ,password='$password'  where id=$id1";
+      $sql ="UPDATE admin_account set username='$name' ,password='$password' ,active='$active'  where id=$id1";
        $result = mysqli_query($db,$sql);
        header("location:userview.php");
      }
@@ -17,7 +18,7 @@
     <html>
 
     <head>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
@@ -36,6 +37,10 @@
                     <tr>
                         <td>Password:</td>
                         <td> <input type="text" name="password" value="<?php echo $row['password']; ?>"></td>
+                    </tr>
+                    <tr>
+                        <td>Status:</td>
+                        <td> <input type="text" name="active" value="<?php echo $row['active']; ?>"></td>
                     </tr>
                     <tr>
                         <td></td>
