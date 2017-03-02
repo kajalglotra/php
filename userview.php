@@ -3,10 +3,11 @@
      include('session.php');
      $sql = "SELECT * FROM admin_account";
       $result = mysqli_query($db,$sql);
-      if(isset($_REQUEST['action'] ) && $_REQUEST['action'] =='delete'){
+      if(isset($_REQUEST['action'] ) &&  $_REQUEST['action'] =='delete'){
         $id=$_REQUEST['id'];
         $sql ="DELETE from  admin_account  where id=$id";
          mysqli_query($db,$sql);
+         header("location:userview.php");
       }
       
    ?>
@@ -28,7 +29,8 @@
                 <center>Admin Panel</center>
             </h1>
             <div style="float:right;">
-                <a href="poll.php">add ques</a>
+                <a href="view_poll.php"><img src="poll.jpg" width="30px" height="30px"></a>
+                <a href="poll.php"><img src="ques.png" width="30px" height="30px"></a>
                 <a href="adduser.php"><img src="add.png" width="30px" height="30px"></a>
                 <a href="logout.php"><img src="log.jpeg" width="30px" height="30px"></a>
             </div>
@@ -46,7 +48,6 @@
                  { 
                   $id=$row['id'];
 	        ?>
-                    <form action="deleteuser.php" method="POST">
                         <tr class="info">
                             <td>
                                 <?php echo $row['username']; ?>
@@ -66,7 +67,7 @@
                             </td>
                         </tr>
                         <?php }?>
-                    </form>
+                
             </table>
         </div>
     </body>
