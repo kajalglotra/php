@@ -61,16 +61,11 @@
                     </tr>
                      <tr>
                         <td>Status:</td>
-                        <td> <input type="text" name="status" value="<?php echo $row['status']; ?>"></td>
+                        <td><select name="value">
+                             <option value="1">Activate</option>
+                                <option value="0">Deactivate</option></td>
                     </tr>
-                     <tr>
-                        <td>Creation Time:</td>
-                        <td> <input type="text" name="time1" value="<?php echo $row['time1']; ?>"></td>
-                    </tr>
-                    <tr>
-                        <td>Edited Time:</td>
-                        <td> <input type="text" name="time2" value="<?php echo $row['time2']; ?>"></td>
-                    </tr>
+                
                     <tr>
                         <td></td>
                         <td><input type="submit" value="submit" name="update">
