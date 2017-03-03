@@ -22,6 +22,9 @@
                 font-size: 15;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    
     </head>
 
     <body>
@@ -80,11 +83,16 @@
             $rs_result = mysqli_query($db,$sql); 
             $total_records = mysqli_num_rows($rs_result);  
             $total_pages = ceil($total_records / $num_rec_per_page); 
-            echo "<a href='view_poll.php?page=1'><input type='button' class='btn-info' value='<<'></a> ";  
-            for ($i=1; $i<=$total_pages; $i++) { 
-            echo "<a href='view_poll.php?page=".$i."'><input type='button' class='btn-danger' value=".$i."></a> "; 
-            }; 
-            echo "<a href='view_poll.php?page=$total_pages'><input type='button' class='btn-info' value='>>'></a> ";; 
+            echo "<a href='view_poll.php?page=1'><button'  class='btn-info'><<</button></a> ";  
+            for ($i=1; $i<=$total_pages; $i++){
+                if(isset($_GET['page']) && $_GET['page']==$i){
+              echo "<button'  class=' btn-default'>".$i."</button> ";   
+                }
+               
+                else{
+            echo "<a href='view_poll.php?page=".$i."'><button'>".$i."</button></a> "; 
+            }}
+            echo "<a href='view_poll.php?page=$total_pages'><button'  class=' btn-info'>>></button></a> ";
             ?>
         </div>
     </body>
