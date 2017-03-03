@@ -11,7 +11,8 @@
       }
       
    ?>
-   <html>
+
+    <html>
 
     <head>
         <link rel="stylesheet" href="style.css">
@@ -57,7 +58,7 @@
                             <?php echo $row['ques']; ?>
                         </td>
                         <td>
-                            <?php if($row['status']==1) echo 'Active'; else echo 'Deactive'; ?>
+                            <?php echo $row['status']; ?>
                         </td>
                         <td>
                             <?php echo $row['time1'];  ?>
@@ -79,11 +80,11 @@
             $rs_result = mysqli_query($db,$sql); 
             $total_records = mysqli_num_rows($rs_result);  
             $total_pages = ceil($total_records / $num_rec_per_page); 
-            echo "<a href='view_poll.php?page=1'>".'|<'."</a> ";  
+            echo "<a href='view_poll.php?page=1'><input type='button' class='btn-info' value='<<'></a> ";  
             for ($i=1; $i<=$total_pages; $i++) { 
-            echo "<a href='view_poll.php?page=".$i."'>".$i."</a> "; 
+            echo "<a href='view_poll.php?page=".$i."'><input type='button' class='btn-danger' value=".$i."></a> "; 
             }; 
-            echo "<a href='view_poll.php?page=$total_pages'>".'>|'."</a> "; 
+            echo "<a href='view_poll.php?page=$total_pages'><input type='button' class='btn-info' value='>>'></a> ";; 
             ?>
         </div>
     </body>
