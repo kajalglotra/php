@@ -66,10 +66,10 @@
                             <?php echo $row['time2'];  ?>
                         </td>
                         <td>
-                            <a href="edit_poll.php?id=<?php echo $id;?>"><img src="b_edit.png" alt="" /></a>
+                            <a href="edit_poll.php?id=<?php echo $row['id'];?>"><img src="b_edit.png" alt="" /></a>
                         </td>
                         <td>
-                            <a href="?action=delete&id=<?php echo $id;?>"><img src="b_drop.png" alt="" /></a>
+                            <a href="?action=delete&id=<?php echo $row['id'];?>"><img src="b_drop.png" alt="" /></a>
                         </td>
                     </tr>
                     <?php }?>
