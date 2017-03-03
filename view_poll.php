@@ -1,4 +1,4 @@
- <?php
+<?php
      include("config.php");
      include('session.php');
      $sql = "SELECT * FROM poll";
@@ -92,7 +92,7 @@
                 else{
             echo "<a href='view_poll.php?page=".$i."'><button'>".$i."</button></a> "; 
             }}
-            echo "<a href='view_poll.php?page=$total_pages'><button'  class=' btn-info'>>></button></a> ";
+            echo "<a href='view_poll.php?page=$total_pages'><button'  class='btn btn-info'>>></button></a> ";
             ?>
         </div>
     </body>
