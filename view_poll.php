@@ -11,7 +11,7 @@
       }
       
    ?>
-    <html>
+   <html>
 
     <head>
         <link rel="stylesheet" href="style.css">
@@ -43,26 +43,48 @@
                     <th>Edited Time</th>
                     <th>Edit</th>
                     <th>Delete</th>
-               </tr>
+                </tr>
                 <?php
-              while($row = mysqli_fetch_array($result))
-                 { 
-                  $id=$row['id'];
-            ?>    
-                        <tr class="info">
-                            <td>
-                                <?php echo $row['ques']; ?>
-                            </td>
-                            <td><?php  if($row['status']==1) echo('Active'); else echo('Deactive'); ?></td>
-                            <td><?php echo $row['time1'];  ?></td>
-                            <td><?php echo $row['time2'];  ?></td>
-                            <td><a href="edit_poll.php?id=<?php echo $id;?>"><img src="b_edit.png" alt="" /></a></td>
-                            <td>
-                                <a href="?action=delete&id=<?php echo $id;?>"><img src="b_drop.png" alt="" /></a>
-                            </td>
-                        </tr>
-                        <?php }?>
+                $num_rec_per_page=5;
+                if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
+                 $start_from = ($page-1) * $num_rec_per_page; 
+                 $sql = "SELECT * FROM poll LIMIT $start_from, $num_rec_per_page"; 
+                  $rs_result = mysqli_query ($db,$sql); //run the query
+                    while ($row = mysqli_fetch_assoc($rs_result)) { 
+                  ?>
+                    <tr class="info">
+                        <td>
+                            <?php echo $row['ques']; ?>
+                        </td>
+                        <td>
+                            <?php if($row['status']==1) echo 'Active'; else echo 'Deactive'; ?>
+                        </td>
+                        <td>
+                            <?php echo $row['time1'];  ?>
+                        </td>
+                        <td>
+                            <?php echo $row['time2'];  ?>
+                        </td>
+                        <td>
+                            <a href="edit_poll.php?id=<?php echo $id;?>"><img src="b_edit.png" alt="" /></a>
+                        </td>
+                        <td>
+                            <a href="?action=delete&id=<?php echo $id;?>"><img src="b_drop.png" alt="" /></a>
+                        </td>
+                    </tr>
+                    <?php }?>
             </table>
+            <?php 
+            $sql = "SELECT * FROM poll"; 
+            $rs_result = mysqli_query($db,$sql); 
+            $total_records = mysqli_num_rows($rs_result);  
+            $total_pages = ceil($total_records / $num_rec_per_page); 
+            echo "<a href='view_poll.php?page=1'>".'|<'."</a> ";  
+            for ($i=1; $i<=$total_pages; $i++) { 
+            echo "<a href='view_poll.php?page=".$i."'>".$i."</a> "; 
+            }; 
+            echo "<a href='view_poll.php?page=$total_pages'>".'>|'."</a> "; 
+            ?>
         </div>
     </body>
 
