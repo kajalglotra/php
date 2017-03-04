@@ -20,29 +20,7 @@
 
     <head>
         <link rel="stylesheet" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script>
-            var count=3;
-            $(document).ready(function() {
-                $(".add").click(function() {
-                    if(count<=5){
-                    $(".inner").append("<tr id='abc'><td>Option:</td><td> <input type='text' name='option"+count+"' value=''></td><td></td></tr>");
-                    count=count+1;
-                  }
-                });
-                $("#remove").click(function() {
-                    $("#abc").remove();
-                });
-                 $("#register").click(function() {
-                  var ques = $("#ques").val();
-                  var option1 = $("#option1").val();
-                  var option2 = $("#option2").val();
-                if (ques== '' || option1== '' || option2 ==  '') {
-                  alert("Please fill all fields...!!!!!!");
-                 } 
-               });
-            });
-        </script>
+        
     </head>
 
     <body>
@@ -95,5 +73,27 @@
             </form>
         </div>
     </body>
-
+     <script src="jquery.js"></script>
+        <script>
+            var count=3;
+            $(document).ready(function() {
+                $(".add").click(function() {
+                    if(count<=5){
+                    $(".inner").append("<tr id='abc'><td>Option:</td><td> <input type='text' name='option"+count+"' value=''></td><td></td></tr>");
+                    count=count+1;
+                  }
+                });
+                $("#remove").click(function() {
+                    $("#abc").remove();
+                });
+                 $("#register").click(function() {
+                  var ques = $("#ques").val();
+                  var option1 = $("#option1").val();
+                  var option2 = $("#option2").val();
+                if (ques== '' || option1== '' || option2 ==  '') {
+                  alert("Please fill all fields...!!!!!!");
+                 } 
+               });
+            });
+        </script>
     </html>
