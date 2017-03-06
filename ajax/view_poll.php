@@ -13,7 +13,35 @@
                 font-size: 15;
             }
         </style>
-       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+         <script type="text/javascript">
+          $(function() {
+             $(".delete").click(function(){
+                   var element = $(this);
+                   var del_id = element.attr("id");
+                   var tr = $(this).parents(".info");
+                  if(confirm("Are you sure you want to delete this?"))
+                   {
+                       $.ajax({
+                    type: "POST",
+                    url:"delete.php",
+                     data:{id:del_id},
+                      success: function(result){
+                        if(result == '1'){
+                        tr.animate({ backgroundColor: "#003" }, "slow")
+                        .animate({ opacity: "hide" }, "slow");
+                      }
+                      else{
+                        console.log(result);
+                      }
+                      }
+                    });
+
+                       }
+                });
+               });
+</script>
+    
     </head>
 
     <body>
@@ -89,28 +117,5 @@
             ?>
         </div>
     </body>
-      <script src="jquery.js"></script>
-         <script type="text/javascript">
-          $(function() {
-             $(".delete").click(function(){
-                 var element = $(this);
-                 var del_id = element.attr("id");
-                 var info = 'id:' + del_id;   
-                 if(confirm("Are you sure you want to delete this?"))
-                   {
-                     $.ajax({
-                     type: "POST",
-                     url:"delete.php",
-                      data:{id:del_id},
-                       success: function(){
-                       }
-                     });
-                     $(this).parents(".info").animate({ backgroundColor: "#003" }, "slow")
-                     .animate({ opacity: "hide" }, "slow");
-                     }
-                   return false;
-               });
-           });
-</script>
-    
+
     </html>
