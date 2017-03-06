@@ -33,9 +33,9 @@
                     <tr>
                      <tr>
                         <td>Status:</td>
-                        <td><select name="value">
-                             <option value="1">Activate</option>
-                                <option value="0">Deactivate</option></td>
+                        <td><select name="status" value="1">
+                             <option value="1" name="status">Activate</option>
+                                <option value="0" name="status">Deactivate</option></td>
                         <td></td>
                     </tr>
                         <td>Question:</td>
