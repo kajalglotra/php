@@ -1,11 +1,12 @@
 <?php
 include('config.php');
+$error='';
 $id=($_POST['id']);
-echo $id;
 if($_POST['id'])
 {
-$id=($_POST['id']);
 $delete = "DELETE FROM `poll` WHERE id='$id'";
-mysqli_query($db, $delete);
+$query=mysqli_query($db, $delete) or die(mysqli_error());
+echo $query;
 }
+
 ?>
